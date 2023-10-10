@@ -1,5 +1,11 @@
+import { Button } from "./components/Button/button";
+
 function App() {
-  return <h1>Test</h1>;
+  return (
+    <div className="m-auto max-w-screen-xl  pt-5">
+      <Button title={"Adiconar Numero"} />
+    </div>
+  );
 }
 
 export default App;
