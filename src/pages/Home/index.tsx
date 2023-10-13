@@ -30,9 +30,22 @@ export function Home() {
             />
           </Label>
         </div>
-
-        <div onClick={handleAddNumber}>
-          <Button>Adicionar Numero</Button>
+        <div className="flex gap-3">
+          <div>
+            <Button onClick={handleAddNumber} colorSelect="add">
+              Adicionar Numero
+            </Button>
+          </div>
+          <div>
+            <Button size="md" colorSelect="sort">
+              Gerar Numeros
+            </Button>
+          </div>
+          <div>
+            <Button size="lg" colorSelect="remove">
+              Limpar Numeros
+            </Button>
+          </div>
         </div>
       </div>
       <div>
