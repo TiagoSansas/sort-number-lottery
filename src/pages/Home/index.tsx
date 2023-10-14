@@ -8,7 +8,6 @@ export function Home() {
 
   const [quantyNumber, setQuantyNumber] = useState<number>(0);
   const [arrayNumber, setArrayNumber] = useState<number[]>([]);
-
   function changeStringToNumber(target: HTMLInputElement) {
     setNumber(target.valueAsNumber);
   }
@@ -24,20 +23,13 @@ export function Home() {
     setNumber(0);
   }
 
-  function convertSetAndArray(set: object) {
-    if (set instanceof Set) {
-      const newArray = Array.from(set);
-      return newArray;
-    }
-  }
-
-  function createNumbersRandom() {
-    const numberSort = new Set();
-    if (quantyNumber > 0) {
-      for (let i = 0; i <= quantyNumber; i++) {
+  function createNumbersRandom(quantNumber: number = 0) {
+    const numberSort: number[] = [];
+    if (quantNumber > 0) {
+      for (let i = 0; i <= quantNumber; i++) {
         const numberAdd = Math.floor(Math.random() * 100);
-        if (!numberSort.has(numberAdd)) {
-          numberSort.add(numberAdd);
+        if (!numberSort.includes(numberAdd)) {
+          numberSort.push(numberAdd);
         }
       }
     }
@@ -52,9 +44,8 @@ export function Home() {
   }
 
   function HandleAddQuantiyNumberSort() {
-    const numberRandom = createNumbersRandom();
-    const convertSetToArray = convertSetAndArray(numberRandom);
-    const numberAccepet = bloquedNumberEqual(convertSetToArray);
+    const numberRandom = createNumbersRandom(quantyNumber);
+    const numberAccepet = bloquedNumberEqual(numberRandom);
 
     setArrayNumber((state) => [...state, ...(numberAccepet || [])]);
     setQuantyNumber(0);
