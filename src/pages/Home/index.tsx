@@ -8,12 +8,19 @@ export function Home() {
 
   const [quantyNumber, setQuantyNumber] = useState<number>(0);
   const [arrayNumber, setArrayNumber] = useState<number[]>([]);
-  function changeStringToNumber(target: HTMLInputElement) {
-    setNumber(target.valueAsNumber);
+
+  function changeGetNumber({ target }: React.ChangeEvent<HTMLInputElement>) {
+    if (!Number.isNaN(target.valueAsNumber)) {
+      setNumber(target.valueAsNumber);
+    }
   }
 
-  function changeSetQuantyNumber(target: HTMLInputElement) {
-    setQuantyNumber(target.valueAsNumber);
+  function changeSetQuantyNumber({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) {
+    if (!Number.isNaN(target.valueAsNumber)) {
+      setQuantyNumber(target.valueAsNumber);
+    }
   }
 
   function handleAddNumber() {
@@ -59,7 +66,8 @@ export function Home() {
             <InputNumber
               id={"inputNumber"}
               value={number}
-              GetValueInput={changeStringToNumber}
+              type="number"
+              onChange={changeGetNumber}
             />
           </Label>
         </div>
@@ -71,7 +79,8 @@ export function Home() {
             <InputNumber
               id={"quantyNumber"}
               value={quantyNumber}
-              GetValueInput={changeSetQuantyNumber}
+              type="number"
+              onChange={changeSetQuantyNumber}
             />
           </Label>
         </div>
