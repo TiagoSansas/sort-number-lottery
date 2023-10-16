@@ -1,11 +1,5 @@
 import { ComponentProps } from "react";
 
-/* interface InputProps2 {
-  GetValueInput: (target: HTMLInputElement) => void;
-  id: string;
-  value: number;
-} */
-
 type InputProps = ComponentProps<"input">;
 
 export function InputNumber({ ...props }: InputProps) {
