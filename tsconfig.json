@@ -18,7 +18,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+ 
+   /* Config Jest TS */
+    "baseUrl": ".",
+    "paths": {
+      "@App/*": ["src/*"],
+      "lib/*": ["common/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
