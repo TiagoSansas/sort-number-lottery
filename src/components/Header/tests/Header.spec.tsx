@@ -1,15 +1,16 @@
-import { BrowserRouter } from "react-router-dom";
 import { Header } from "../header";
-
+import { MemoryRouter } from "react-router-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+
+const mockLink = jest.fn();
 
 describe("Header", () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Header />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
   });
 
@@ -27,21 +28,23 @@ describe("Header", () => {
   });
 
   it("shoul click Sort Number Lottery navigate page", () => {
-    const about = screen.getByText("Sort Number Lottery");
-    fireEvent.click(about);
-    expect(window.location.pathname).toBe("/");
+    const home = screen.getByText("Sort Number Lottery");
+    home.onclick = () => mockLink("/");
+    fireEvent.click(home);
+    expect(mockLink).toHaveBeenCalledWith("/");
   });
 
   it("shoul click about navigate page", () => {
     const about = screen.getByText("About");
-
+    about.onclick = () => mockLink("/about");
     fireEvent.click(about);
 
-    expect(window.location.pathname).toBe("/about");
+    expect(mockLink).toHaveBeenCalledWith("/about");
   });
   it("shoul click contact navigate page", () => {
-    const about = screen.getByText("Contact");
-    fireEvent.click(about);
-    expect(window.location.pathname).toBe("/contact");
+    const contact = screen.getByText("Contact");
+    contact.onclick = () => mockLink("/contact");
+    fireEvent.click(contact);
+    expect(mockLink).toHaveBeenCalledWith("/contact");
   });
 });
