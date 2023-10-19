@@ -50,7 +50,7 @@ export function Home() {
     return newArray;
   }
 
-  function HandleAddQuantiyNumberSort() {
+  function handleAddQuantiyNumberSort() {
     const numberRandom = createNumbersRandom(quantyNumber);
     const numberAccepet = bloquedNumberEqual(numberRandom);
 
@@ -65,6 +65,7 @@ export function Home() {
           <Label id={"inputNumber"} title={"Adicionar Numero"}>
             <InputNumber
               id={"inputNumber"}
+              data-testid={"inputNumber"}
               value={number}
               type="number"
               onChange={changeGetNumber}
@@ -78,6 +79,7 @@ export function Home() {
           >
             <InputNumber
               id={"quantyNumber"}
+              data-testid={"quantyNumber"}
               value={quantyNumber}
               type="number"
               onChange={changeSetQuantyNumber}
@@ -92,7 +94,7 @@ export function Home() {
           </div>
           <div>
             <Button
-              onClick={HandleAddQuantiyNumberSort}
+              onClick={handleAddQuantiyNumberSort}
               size="md"
               colorSelect="sort"
             >
